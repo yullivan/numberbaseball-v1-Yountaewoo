@@ -53,49 +53,58 @@ public class Application {
                 System.out.print("세 번째 숫자를 입력하세요: ");
                 int user3 = scanner.nextInt();
 
+                // 스트라이크의 갯수
+                int strike = 0;
+                if (user1 == firstRandomint) {
+                    strike = strike + 1;
+                }
+                if (user2 == secondRandomint) {
+                    strike = strike + 1;
+                }
+                if (user3 == thirdRandomint) {
+                    strike = strike + 1;
+                }
+                System.out.println("strike = " + strike + " 스트라이크");
 
-                // 3스트라이크인 경우 + 게임 종료
-                if (user1 == firstRandomint && user2 == secondRandomint && user3 == thirdRandomint) {
-                    System.out.println("3 스트라이크");
+                // 볼의 갯수
+                int ball = 0;
+                if (user1 == secondRandomint || user1 == thirdRandomint) {
+                    ball = ball + 1;
+                }
+                if (user2 == firstRandomint || user2 == thirdRandomint) {
+                    ball = ball + 1;
+                }
+                if ( user3 == firstRandomint || user3 == secondRandomint) {
+                    ball = ball +1;
+                }
+                System.out.println("ball = " + ball);
+
+                if (strike == 3) {
                     break;
-                }
-                // 2스트라이크인 경우
-                if ((user1 == firstRandomint && user2 == secondRandomint && user3 != thirdRandomint) ||
-                        (user1 == firstRandomint && user2 != secondRandomint && user3 == thirdRandomint) ||
-                        (user1 != firstRandomint && user2 == secondRandomint && user3 == thirdRandomint)) {
-                    System.out.println("2 스트라이크");
-                }
-                //1스트라이크인 경우
-                if ((user1 == firstRandomint && user2 != secondRandomint && user3 != thirdRandomint) ||
-                        (user1 != firstRandomint && user2 == secondRandomint && user3 != thirdRandomint) ||
-                        (user1 != firstRandomint && user2 != secondRandomint && user3 == thirdRandomint)) {
-                    System.out.println("1 스트라이크");
                 }
             }
 
-            System.out.println("축하합니다! 정답을 맞추셨습니다.");
+                System.out.println("축하합니다! 정답을 맞추셨습니다.");
 
-            //다음 게임의 여부 물어보기
-            System.out.println("다음 게임을 하시겠습니까? : (yes/no)");
-            String answer = scanner.nextLine();
-            answer = scanner.nextLine();
-
-            //yes/no 가 아닌 다른 답이 왔을때
-            while (!answer.equals("yes") && !answer.equals("no")) {
-                System.out.println("다시 입력하십시오 : (yes/no)");
+                //다음 게임의 여부 물어보기
+                System.out.println("다음 게임을 하시겠습니까? : (yes/no)");
+                String answer = scanner.nextLine();
                 answer = scanner.nextLine();
 
-                if (answer.equals("yes") || answer.equals("no")) {
-                    break;
-                }
-            }
+                //yes/no 가 아닌 다른 답이 왔을때
+                while (!answer.equals("yes") && !answer.equals("no")) {
+                    System.out.println("다시 입력하십시오 : (yes/no)");
+                    answer = scanner.nextLine();
 
-            if (answer.equals("no")) {
-                System.out.println("게임종료");
-                break;
+                    }
+                if (answer.equals("no")) {
+                        System.out.println("게임종료");
+                        break;
+                    }
+                }
+
             }
 
         }
 
-    }
-}
+
